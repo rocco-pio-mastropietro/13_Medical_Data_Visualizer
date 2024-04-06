@@ -24,7 +24,7 @@ def draw_cat_plot():
 
     # Draw the catplot with 'sns.catplot()'
     df_cat['value'] = df_cat['value'].replace({1:'1', 0:'0'})
-    plot = sns.catplot(data=df_cat, x='variable', y='total', hue='value', kind='bar', col='cardio')
+    plot = sns.catplot(data=df_cat, x='variable', y='total', hue='value', kind='bar', col='cardio', order=['active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke'])
 
     # Get the figure for the output
     fig = plot.figure

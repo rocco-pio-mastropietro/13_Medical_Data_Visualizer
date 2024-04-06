@@ -23,7 +23,7 @@ def draw_cat_plot():
     
     # Draw the catplot with 'sns.catplot()'
     df_cat['value'] = df_cat['value'].replace({1:'1', 0:'0'})
-
+    
     # Get the figure for the output
     fig = sns.catplot(data=df_cat, x='variable', y='total', hue='value', kind='bar', col='cardio')
 
@@ -33,25 +33,25 @@ def draw_cat_plot():
 
 
 # Draw Heat Map
-def draw_heat_map():
+#def draw_heat_map():
     # Clean the data
-    df_heat = None
+#    df_heat = None
 
     # Calculate the correlation matrix
-    corr = None
+#    corr = None
 
     # Generate a mask for the upper triangle
-    mask = None
+#    mask = None
 
 
 
     # Set up the matplotlib figure
-    fig, ax = None
+#    fig, ax = None
 
     # Draw the heatmap with 'sns.heatmap()'
 
 
 
     # Do not modify the next two lines
-    fig.savefig('heatmap.png')
-    return fig
+#    fig.savefig('heatmap.png')
+#    return fig

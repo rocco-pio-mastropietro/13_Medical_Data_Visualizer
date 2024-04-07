@@ -24,10 +24,10 @@ def draw_cat_plot():
 
     # Draw the catplot with 'sns.catplot()'
     df_cat['value'] = df_cat['value'].replace({1:'1', 0:'0'})
-    plot = sns.catplot(data=df_cat, x='variable', y='total', hue='value', kind='bar', col='cardio', order=['active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke'])
+    categorical_plot = sns.catplot(data=df_cat, x='variable', y='total', hue='value', kind='bar', col='cardio', order=['active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke'])
 
     # Get the figure for the output
-    fig = plot.figure
+    fig = categorical_plot.figure
 
     # Do not modify the next two lines
     fig.savefig('catplot.png')
@@ -38,22 +38,19 @@ def draw_cat_plot():
 def draw_heat_map():
     # Clean the data
     df_heat = df.loc[(df['ap_lo'] <= df['ap_hi']) & (df['height'] >= df['height'].quantile(0.025)) & (df['height'] <= df['height'].quantile(0.975)) & (df['weight'] >= df['weight'].quantile(0.025))& (df['weight'] <= df['weight'].quantile(0.975))]
-
+    
     # Calculate the correlation matrix
-#    corr = None
-
+    corr = df_heat.corr()
+    
     # Generate a mask for the upper triangle
-#    mask = None
-
-
+    mask = np.triu(corr.to_numpy().reshape((14, 14)), k=0)
 
     # Set up the matplotlib figure
-#    fig, ax = None
+    fig, ax = fig, ax = plt.subplots()
 
     # Draw the heatmap with 'sns.heatmap()'
-
-
+    heat_map = sns.heatmap(corr, mask=mask)
 
     # Do not modify the next two lines
-#    fig.savefig('heatmap.png')
-#    return fig
+    fig.savefig('heatmap.png')
+    return fig

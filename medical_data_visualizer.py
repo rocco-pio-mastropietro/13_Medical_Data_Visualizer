@@ -46,7 +46,7 @@ def draw_heat_map():
     mask = np.triu(corr.to_numpy().reshape((14, 14)), k=0)
 
     # Set up the matplotlib figure
-    fig, ax = fig, ax = plt.subplots()
+    fig, ax = fig, ax = plt.subplots(layout='constrained')
 
     # Draw the heatmap with 'sns.heatmap()'
     heat_map = sns.heatmap(corr, mask=mask, annot=True, fmt='.1f')
